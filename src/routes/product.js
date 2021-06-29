@@ -5,7 +5,7 @@ const multer = require("multer");
 const shortid = require("shortid")
 const path = require("path")
 
-const { requireSignIn, adminMiddleware } = require("../common-middleware");
+const { requireSignIn, adminMiddleware, uploadS3 } = require("../common-middleware");
 const { createProduct, updateProduct, getProductsBySlug, getDetailsById, deleteProductById, getProducts } = require("../controller/product")
 
 const storage = multer.diskStorage({
@@ -19,8 +19,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/product/create/', requireSignIn, adminMiddleware, upload.array('productPicture'), createProduct);
-router.post('/product/update/', requireSignIn, adminMiddleware, upload.array('productPicture'), updateProduct);
+router.post('/product/create/', requireSignIn, adminMiddleware, uploadS3.array('productPicture'), createProduct);
+router.post('/product/update/', requireSignIn, adminMiddleware, uploadS3.array('productPicture'), updateProduct);
 router.get('/products/:slug', getProductsBySlug);
 router.get('/product/:productId', getDetailsById);
 router.delete("/product/deleteProductById", requireSignIn, adminMiddleware, deleteProductById);

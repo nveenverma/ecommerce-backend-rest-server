@@ -29,7 +29,7 @@ exports.createProduct = (req, res) => {
         return res.status(400).json({ error })
       }
       if (product) {
-        return res.status(201).json({ product })
+        return res.status(201).json({ product, files: req.files })
       }
     })
   }
@@ -42,7 +42,7 @@ exports.updateProduct = async (req, res) => {
     let productPictures = [];
     if (req.files.length > 0) {
         productPictures = req.files.map(file => {
-            return ({ img : file.filename })
+            return ({ img : file.location })
         })
     }
 
@@ -70,7 +70,7 @@ exports.updateProduct = async (req, res) => {
       }
     );
       
-    return res.status(201).json({ updatedProduct });
+    return res.status(201).json({ updatedProduct, files: req.files });
 }
 
 exports.getProductsBySlug = (req, res) => {

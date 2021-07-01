@@ -53,6 +53,10 @@ app.use('/api', adminOrderRoutes);
 app.use('/api', initialDataRoutes);
 app.use('/api', newPageRoutes);
 
+app.get("/", (req, res) => {
+    res.send("This page loads when making GET / request to the Backend Server")
+})
+
 // Listening to the server on below port
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`)

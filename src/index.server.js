@@ -21,20 +21,20 @@ const newPageRoutes = require("./routes/admin/page")
 // Environment variable or you can say constants
 env.config();
 
-// MongoDB Connection
-const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PWD}@cluster0.yiuxu.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
+// // MongoDB Connection
+// const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PWD}@cluster0.yiuxu.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
 
-mongoose.connect(
-    MONGODB_URI, 
-    {
-        useNewUrlParser : true,
-        useUnifiedTopology : true,
-        useCreateIndex : true,
-        useFindAndModify : false
-    }
-).then(() => {
-    console.log("Database Connected");
-})
+// mongoose.connect(
+//     MONGODB_URI, 
+//     {
+//         useNewUrlParser : true,
+//         useUnifiedTopology : true,
+//         useCreateIndex : true,
+//         useFindAndModify : false
+//     }
+// ).then(() => {
+//     console.log("Database Connected");
+// })
 
 // Using middleware
 app.use(cors());
@@ -60,5 +60,6 @@ app.get("/", (req, res) => {
 // Listening to the server on below port
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`)
-    console.log(`Following are the mongoDB details : User : ${process.env.MONGODB_USER} and DB : ${MONGODB_DATABASE}`)
+    console.log(`Following are the mongoDB details : `)
+    console.log(`User : ${process.env.MONGODB_USER} and DB : ${MONGODB_DATABASE}`)
 });

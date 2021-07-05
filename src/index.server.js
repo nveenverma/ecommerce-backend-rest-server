@@ -24,17 +24,17 @@ env.config();
 // MongoDB Connection
 const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PWD}@cluster0.yiuxu.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
 
-// mongoose.connect(
-//     MONGODB_URI, 
-//     {
-//         useNewUrlParser : true,
-//         useUnifiedTopology : true,
-//         useCreateIndex : true,
-//         useFindAndModify : false
-//     }
-// ).then(() => {
-//     console.log("Database Connected");
-// })
+mongoose.connect(
+    MONGODB_URI, 
+    {
+        useNewUrlParser : true,
+        useUnifiedTopology : true,
+        useCreateIndex : true,
+        useFindAndModify : false
+    }
+).then(() => {
+    console.log("Database Connected");
+})
 
 // Using middleware
 app.use(cors());

@@ -61,5 +61,5 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`)
     console.log(`Following are the mongoDB details : `)
-    console.log(`User : ${process.env.MONGODB_USER} and DB : ${MONGODB_DATABASE}`)
+    console.log(`User : ${process.env.MONGODB_USER} and DB : ${process.env.MONGODB_DATABASE}`)
 });
